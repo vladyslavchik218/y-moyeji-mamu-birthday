@@ -182,32 +182,41 @@
             Мам, за моїх 14 років життя з тобою, хочу сказати гарне дякую тобі, я вдячний світу, що ти у мене є!
         </p>
     </section>
-    <script>
-        const compliments = [
-            "Дякую, що дала зрозуміти шо айфон не коштує 200 гривень",
-            "Твоя усмішка робить мій день кращим.",
-            "Дякую за твою нескінченну підтримку та віру в мене.",
-            "Ти готуєш найсмачнішу їжу у всесвіті!",
-            "Дякую, що одобрила пітбайк",
-            "Ти — мій герой без плащу.",
-            "Світ стає кращим поруч із тобою.",
-            "Стільки порваних листків чистовика, за ради дисципліни",
-            "Дякую, що навчила вірити у себе!"
-        ];
+ <script>
+    const compliments = [
+        "Дякую, що дала зрозуміти шо айфон не коштує 200 гривень",
+        "Твоя усмішка робить мій день кращим.",
+        "Дякую за твою нескінченну підтримку та віру в мене.",
+        "Ти готуєш найсмачнішу їжу у всесвіті!",
+        "Дякую, що одобрила пітбайк",
+        "Ти — мій герой без плащу.",
+        "Не пускай соплі на чистий листок!",
+        "Стільки порваних листків чистовика, за ради дисципліни",
+        "Дякую, що навчила вірити у себе!",
+        "Навіть коли немає сил, ти можеш накричати на нас з татом",
+        "Дякую за невиспані ранки"
+    ];
 
-        function generateCompliment() {
-            const textElement = document.getElementById('compliment-text');
-            const randomIndex = Math.floor(Math.random() * compliments.length);
-            
-            // Додаємо легкий ефект появи
-            textElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                textElement.innerText = compliments[randomIndex];
-                textElement.style.opacity = 1;
-                textElement.style.transition = '0.5s';
-            }, 200);
+    let availableCompliments = [...compliments];
+
+    function generateCompliment() {
+        const textElement = document.getElementById('compliment-text');
+        
+        if (availableCompliments.length === 0) {
+            availableCompliments = [...compliments];
         }
-    </script>
+
+        const randomIndex = Math.floor(Math.random() * availableCompliments.length);
+        const selectedCompliment = availableCompliments.splice(randomIndex, 1)[0];
+
+        textElement.style.opacity = 0;
+        
+        setTimeout(() => {
+            textElement.innerText = selectedCompliment;
+            textElement.style.opacity = 1;
+            textElement.style.transition = '0.5s';
+        }, 200);
+    }
+</script>
 </body>
 </html>
